@@ -7,7 +7,11 @@ const server = Bun.serve({
            return new Response("About Us"); 
         }
         if (url.pathname === '/') {
-           return new Response("Landing Page"); 
+            return new Response(Bun.file("index.html"),{
+                headers : {
+                    "Content-Type" : "text/html"
+                }
+            })
         }
         if (url.pathname === '/err'){
             throw new Error("This Path is not yet Implemented");
